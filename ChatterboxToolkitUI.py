@@ -1260,7 +1260,7 @@ def create_zip_from_selection(selected_paths, project_root_dir):
 
 
 # --- Gradio Interface Layout ---
-with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
+with gr.Blocks(title="ChatterboxToolkitUI") as demo:
     gr.Markdown(
         """
         # ChatterboxToolkitUI
@@ -1345,7 +1345,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
 
                         with gr.Column(scale=1): # Right column for logs and output
                             gr.Markdown("### TTS Log")
-                            tts_log = gr.Textbox(label="Log", lines=10, interactive=False, show_copy_button=True)
+                            tts_log = gr.Textbox(label="Log", lines=10, interactive=False)
                             gr.Markdown("### Synthesized Audio Output")
                             tts_audio_output = gr.Audio(label="Playback", type="numpy", visible=False)
                             tts_output_files = gr.File(label="Download Generated Audio(s)", visible=False)
@@ -1466,8 +1466,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                             vc_process_log = gr.Textbox(
                                 label="Log",
                                 lines=15, 
-                                interactive=False, 
-                                show_copy_button=True 
+                                interactive=False 
                             ) 
                             gr.Markdown("### Converted Audio Output")
                             # Two output components, their visibility managed by yield_vc_updates
@@ -1553,7 +1552,6 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                                 value="None selected.", 
                                 lines=5, 
                                 interactive=False, 
-                                show_copy_button=True,
                                 elem_id="batch_tts_files_display" 
                             )
                             # Hidden state to store actual file paths
@@ -1582,7 +1580,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
 
                         with gr.Column(scale=1):
                             gr.Markdown("#### Batch TTS Log")
-                            batch_tts_log = gr.Textbox(label="Log", lines=10, interactive=False, show_copy_button=True) 
+                            batch_tts_log = gr.Textbox(label="Log", lines=10, interactive=False) 
                             gr.Markdown("#### Batch Generated Audio Output")
                             batch_tts_output_files = gr.File(label="Download Generated Audio(s)", file_count="multiple", visible=False)
                             
@@ -1659,8 +1657,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                                 label="Files selected for processing:", 
                                 value="None selected.", 
                                 lines=5, 
-                                interactive=False, 
-                                show_copy_button=True
+                                interactive=False
                             )
                             batch_vc_files_to_process_state = gr.State([])
 
@@ -1691,7 +1688,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
 
                         with gr.Column(scale=1):
                             gr.Markdown("#### Batch VC Log")
-                            batch_vc_log = gr.Textbox(label="Log", lines=10, interactive=False, show_copy_button=True)
+                            batch_vc_log = gr.Textbox(label="Log", lines=10, interactive=False)
                             gr.Markdown("#### Batch Converted Audio Output")
                             batch_vc_output_files = gr.File(label="Download Converted Audio(s)", file_count="multiple", visible=False)
 
@@ -1778,7 +1775,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                             
                         with gr.Column(scale=1):
                             gr.Markdown("#### Text Splitting Log")
-                            dp_text_splitting_log = gr.Textbox(label="Log", lines=10, interactive=False, show_copy_button=True)
+                            dp_text_splitting_log = gr.Textbox(label="Log", lines=10, interactive=False)
                             gr.Markdown("#### Generated Text Chunks")
                             dp_generated_text_chunks = gr.File(label="Download Generated Text Chunks", file_count="multiple", visible=False)
                             
@@ -1857,7 +1854,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                             
                         with gr.Column(scale=1):
                             gr.Markdown("#### Audio Splitting Log")
-                            dp_audio_splitting_log = gr.Textbox(label="Log", lines=10, interactive=False, show_copy_button=True)
+                            dp_audio_splitting_log = gr.Textbox(label="Log", lines=10, interactive=False)
                             gr.Markdown("#### Generated Audio Chunks")
                             dp_generated_audio_chunks = gr.File(label="Download Generated Audio Chunks", file_count="multiple", visible=False)
 
@@ -1920,7 +1917,6 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                                         label="File Content",
                                         lines=10,
                                         interactive=False, 
-                                        show_copy_button=True,
                                         value="" 
                                     )
                                     save_edited_text_btn = gr.Button("Save Changes", variant="primary", interactive=False) 
@@ -1932,7 +1928,6 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                                         label="Log and Status Messages",
                                         lines=15,
                                         interactive=False,
-                                        show_copy_button=True,
                                         value="Select a project and then a text file to begin editing." 
                                     )
                                     with gr.Row(variant="compact"): 
@@ -2012,7 +2007,7 @@ with gr.Blocks(title="ChatterboxToolkitUI", theme=gr.themes.Default()) as demo:
                                     regen_concatenate_btn = gr.Button("🎶 Concatenate All Audios in this Batch Run", variant="secondary", interactive=False)
                                     
                                     gr.Markdown("---")
-                                    regen_status_log = gr.Textbox(label="Regeneration Status Log", lines=10, interactive=False, show_copy_button=True,
+                                    regen_status_log = gr.Textbox(label="Regeneration Status Log", lines=10, interactive=False,
                                                                     value="Load a project, then select a batch run and an audio file.")
                                     regen_concatenated_output_file = gr.File(label="Download Concatenated Audio", visible=False)
 
